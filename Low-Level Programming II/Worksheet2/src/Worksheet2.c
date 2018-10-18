@@ -41,11 +41,11 @@ void Q2(){
 	person p;
 	printf("\n\nQuestion 2\n");
 	printf("ID Card:");
-	scanf("%s", &p.idcard);
+	scanf("%s", p.idcard);
 	printf("Name:");
-	scanf("%s", &p.name);
+	scanf("%s", p.name);
 	printf("Surname:");
-	scanf("%s", &p.surname);
+	scanf("%s", p.surname);
 	printf("Age:");
 	scanf("%i", &p.age);
 	printf("\n\nID Card: %s \nName: %s \nSurname: %s \nAge: %i", p.idcard, p.name, p.surname, p.age);
@@ -77,6 +77,12 @@ void Q3(){
 // QUESTION 4
 void Q4(){
 	printf("\n\nQuestion 4\n");
+	int number = 0;
+	while (number >= 0)
+	{
+		number += 100;
+		printf("%d\n", number);
+	}
 }
 
 
@@ -118,25 +124,27 @@ void Q6(){
 // QUESTION 7
 void Q7(int argc, char *argv[]){
 	printf("\n\nQuestion 7\n");
-	if(argv[1] > argv[2]){
-		printf("The largest number is %s ", argv[1]);
+	if (argc == 3)
+	{
+		int num1 = atoi(argv[1]);
+		int num2 = atoi(argv[2]);
+		if (num1 > num2)
+			printf("%d\n", num1);
+		else
+			printf("%d\n", num2);
+		return;
 	}
-	else if(argv[1] < argv[2]){
-		printf("The largest number is %s ", argv[2]);
-	}
-	else if(argv[1] == argv[2]){
-		printf("The numbers are equal");
-	}
-	else{
-		printf("Not a valid number.");
-	}
+
+	printf("Error: Invalid command line arguments\n");
 }
 
 
 // QUESTION 8
 void Q8(int argc, char *argv[]){
 	printf("\n\nQuestion 8\n");
-	printf("The largest number is %s", (argv[1] > argv[2]) ? argv[1] : argv[2]);
+	int num1 = atoi(argv[1]);
+	int num2 = atoi(argv[2]);
+	printf("%d\n", (num1 > num2) ? num1 : num2);
 }
 
 
