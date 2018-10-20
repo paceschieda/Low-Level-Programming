@@ -1,0 +1,16 @@
+Practical: Working with a Core Dump
+
+1. Where any cmd line args used when the program crashed?
+No.
+
+2. On which line did the crash occur?
+On Line 15
+
+3. What was the user input when it crashed?
+Fiorentina, 123456789
+
+4. Why did it crash?
+The crash happened because it read memory outside your process. 
+
+5. How would you fix it?
+If the user enters a number greater than buffer size do not use it.
