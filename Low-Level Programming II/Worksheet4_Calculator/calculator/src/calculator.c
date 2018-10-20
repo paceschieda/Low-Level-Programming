@@ -17,6 +17,12 @@
 #define TRUE 1
 #define FALSE 0
 
+#if defined DEMO
+	#include "demo_version.h"
+#elif defined FULL
+#include "full_version.h"
+#endif
+
 
 BOOL check_if_number(char* string){
 	for(int i = 0; i < strlen(string); i++){
@@ -26,7 +32,6 @@ BOOL check_if_number(char* string){
 	}
 	return TRUE;
 }
-
 
 
 int main(int argc, char *argv[]) {
@@ -72,20 +77,8 @@ int main(int argc, char *argv[]) {
 			}else{
 				int num1 = atoi(argv[1]);
 				int num2 = atoi(argv[3]);
-				if(strcmp(argv[2], "-") == 0){
-					printf("\n%d - %d = %d \n", num1, num2, (num1-num2));
-				}
-				else if(strcmp(argv[2], "+") == 0){
-					printf("\n%d + %d = %d \n", num1, num2, (num1+num2));
-				}
-				else if(strcmp(argv[2], "x") == 0){
-					printf("\n%d x %d = %d \n", num1, num2, (num1*num2));
-				}
-				else if(strcmp(argv[2], "/") == 0){
-					printf("\n%d / %d = %f \n", num1, num2, ((float)num1/num2));
-				}else{
-					printf("\nError: invalid operator\n");
-				}
+
+				Calculation(num1, num2, argv);
 			}
 		}
 		else{

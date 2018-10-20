@@ -1,8 +1,21 @@
-build: calculator.o
-	gcc calculator.o -o calc
+all: calc_demo calc_full
 
-calculator.o:
-	gcc -Wall -c calculator.c
+calc_demo: calculator_demo.o
+	gcc calculator.o -o calc_demo
+
+calc_full: calculator_full.o
+	gcc calculator.o -o calc_full
+
+calculator_demo.o: calculator.c
+	gcc -Wall -c -DDEMO calculator.c
+
+calculator_full.o: calculator.c
+	gcc -Wall -c -DFULL calculator.c
 
 clean:
-	-rm *.o calc
+	-rm *.o calc_demo calc_full
+
+
+
+
+
