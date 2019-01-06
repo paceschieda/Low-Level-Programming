@@ -4,13 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/cp_assignment.c 
+../src/cp_assignment.c \
+../src/honeypot.c \
+../src/port_scanner.c 
 
 OBJS += \
-./src/cp_assignment.o 
+./src/cp_assignment.o \
+./src/honeypot.o \
+./src/port_scanner.o 
 
 C_DEPS += \
-./src/cp_assignment.d 
+./src/cp_assignment.d \
+./src/honeypot.d \
+./src/port_scanner.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
