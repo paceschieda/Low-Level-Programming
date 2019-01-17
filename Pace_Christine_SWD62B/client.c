@@ -52,14 +52,15 @@ int main(int argc, char *argv[])
 		printf("\r\n-----------------------\n");
 
 		// SAVE TO OUTPUTFILE.CSV
-		FILE *fp_output = fopen(argv[3], "w");
+		FILE *fp_output = fopen(argv[3], "a");
 		if(fp_output != NULL)
 		{
 			for(int i = 0; list[i] != '\0'; ++i) {
 				fprintf(fp_output, "%d \n", list[i]);
 			}
+			fprintf(fp_output, "\n---------------\n");
 			printf("Processing rows... \n");
-			printf("Finished all file, results in outputfile.csv \n");
+			printf("Finished all file, results in scanner_output.csv \n");
 
 			fclose(fp_output);
 		}
