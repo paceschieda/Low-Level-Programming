@@ -84,17 +84,22 @@ int IsEmptyList(node *top) {
 Displays the items on the list passed as parameter, without
 removing items from list
 */
-void ShowList(node **currentNode) {
+int* ShowList(node **currentNode) {
+	int *list= (int*)malloc(sizeof(int));
+	int counter = 0;
 	node *cNode = *currentNode;
 	if (IsEmptyList(cNode) == 0) {
 		do {
 			printf("\nPort: %d\n", cNode->item);
+			list[counter] = cNode->item;			
 			cNode = cNode->next;
+			counter++;			
 		} while (cNode != NULL);
 	}
 	else {
 		printf("The list is empty!");
 	}
+	return list;
 }
 
 
