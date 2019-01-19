@@ -9,6 +9,7 @@
 #include <ctype.h>
 
 #define MAX_CONNECTIONS 5
+pthread_mutex_t lock;
 
 struct args {
     	char *file;
@@ -71,6 +72,7 @@ void* handle_client(void *input){
 				printf("Warning: missing <file> command line argument, defaulting to %s \n", filename);
 			}
 			// SAVE TO OUTPUTFILE.CSV
+			pthread_mutex_lock(&lock);
 			FILE *fp_output = fopen(filename, "a");
 			if(fp_output != NULL)
 			{
@@ -86,6 +88,7 @@ void* handle_client(void *input){
 				printf("Failed to open %s \n", filename);
 				return (void*)3;
 			}
+			pthread_mutex_unlock(&lock);
 		#endif
 
 		close(newsockfd);
@@ -95,6 +98,8 @@ void* handle_client(void *input){
 
 int main(int argc, char *argv[]) {
 	if(argc > 1){
+		pthread_mutex_init(&lock, NULL);
+
 		int thread_res;
 		pthread_t mythread;
 
@@ -123,7 +128,7 @@ int main(int argc, char *argv[]) {
 			}
 		}
 		pthread_join(mythread, NULL);
-		
+		pthread_mutex_destroy(&lock);
 	}
 	else{
 		// No arguments
